@@ -6,7 +6,7 @@
 /*   By: conrad <conrad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:40:37 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/19 21:26:43 by conrad           ###   ########.fr       */
+/*   Updated: 2025/02/20 22:25:35 by conrad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,52 +40,99 @@ void    ft_putstr_fd(char *s, int fd)
         }
 }
 
-int main()
-{	
-	int		fd;
-	ssize_t bytesRead;
-	char	*buff;
-	size_t	line_len;
-	int i;
 
-	i = 0;
+char	*get_next_line(int fd)
+{
+	char	*buff;
+	ssize_t	bytesRead;
+	// int		i;
+	// static size_t index;
+
+	// i = 0;
+	// index = 0;
 	buff = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buff)
-		return (1);
-	fd = open("text.txt", O_RDONLY);
-	if (fd < 0)
-	{
-		perror("error opening a file");
-		free(buff);
-		return (1);
-	}
+		return (NULL);
 	bytesRead = read(fd, buff, BUFFER_SIZE);
 	if (bytesRead < 0)
 	{
-		perror("Error reading a file");
-		free(buff);
-		close(fd);
-		return (1);
+		perror("Error while loading a file");
 	}
 	buff[bytesRead] = '\0';
-	line_len = ft_strlen(buff);
-	// ft_putstr_fd(buff, 1);
-	printf("buff len = %ld\n", line_len);
-	// fflush(stdout);
-	while(buff[i] != '\n')
+	return (buff);
+}
+
+int main()
+{
+	char	*line;
+	int		fd;
+	int		i;
+
+	i = 1;
+	fd = open("text.txt", O_RDONLY);
+	if (fd < 0 )
 	{
-		write(1, &buff[i], 1);
+		perror("Error while opening a file");
+		return (0);
+	}
+	while (i < 4)
+	{
+		line = get_next_line(fd);
+		printf("line [%02d]: %s", i, line);
+		free (line);
 		i++;
 	}
-	while(buff[i] != '\n')
-	{
-		write(1, &buff[i], 1);
-		i++;
-	}
-	free(buff);
 	close(fd);
 	return (0);
-}		
+}
+
+
+// int main()
+// {	
+// 	int		fd;
+// 	ssize_t bytesRead;
+// 	char	*buff;
+// 	size_t	line_len;
+// 	int i;
+
+// 	i = 0;
+// 	buff = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
+// 	if (!buff)
+// 		return (1);
+// 	fd = open("text.txt", O_RDONLY);
+// 	if (fd < 0)
+// 	{
+// 		perror("error opening a file");
+// 		free(buff);
+// 		return (1);
+// 	}
+// 	bytesRead = read(fd, buff, BUFFER_SIZE);
+// 	if (bytesRead < 0)
+// 	{
+// 		perror("Error reading a file");
+// 		free(buff);
+// 		close(fd);
+// 		return (1);
+// 	}
+// 	buff[bytesRead] = '\0';
+// 	line_len = ft_strlen(buff);
+// 	// ft_putstr_fd(buff, 1);
+// 	printf("buff len = %ld\n", line_len);
+// 	// fflush(stdout);
+// 	while(buff[i] != '\n')
+// 	{
+// 		write(1, &buff[i], 1);
+// 		i++;
+// 	}
+// 	while(buff[i] != '\n')
+// 	{
+// 		write(1, &buff[i], 1);
+// 		i++;
+// 	}
+// 	free(buff);
+// 	close(fd);
+// 	return (0);
+// }
 // int main()
 // {
 // 	int		fd;
