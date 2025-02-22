@@ -20,3 +20,5 @@ get_next_line(fd) -> Linijka 2  static int miejsce 20
 get_next_line(fd) -> Linijka 3  static int miejsce 30    ---> bo \n sie wlicza
 
 nie moge od razu zczytac wszystkiego i iterowac sobie po prostu po tablicy, tylko zapamietywac linijke w danym momencie
+https://medium.com/@lannur-s/gnl-c3cff1ee552b <-- stronka ktora pomoze w zrozumieniu tematu xdddd
+(odchodze od zmysłów) 
