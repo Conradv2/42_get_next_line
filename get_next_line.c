@@ -6,7 +6,7 @@
 /*   By: conrad <conrad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:40:37 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/20 22:25:35 by conrad           ###   ########.fr       */
+/*   Updated: 2025/02/22 23:58:18 by conrad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,19 @@ char	*get_next_line(int fd)
 
 	// i = 0;
 	// index = 0;
+	if (fd < 0 )
+	{
+		perror("Error while opening a file");
+		return (NULL);
+	}
 	buff = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buff)
 		return (NULL);
+	// while(buff[i] != '\n')
+	// 	index += buff[i + 1];
 	bytesRead = read(fd, buff, BUFFER_SIZE);
 	if (bytesRead < 0)
-	{
-		perror("Error while loading a file");
-	}
+		perror("Error while reading a file");
 	buff[bytesRead] = '\0';
 	return (buff);
 }
@@ -70,16 +75,12 @@ int main()
 
 	i = 1;
 	fd = open("text.txt", O_RDONLY);
-	if (fd < 0 )
-	{
-		perror("Error while opening a file");
-		return (0);
-	}
 	while (i < 4)
 	{
 		line = get_next_line(fd);
+		// printf("%s", line);
 		printf("line [%02d]: %s", i, line);
-		free (line);
+		free(line);
 		i++;
 	}
 	close(fd);
@@ -124,6 +125,13 @@ int main()
 // 		write(1, &buff[i], 1);
 // 		i++;
 // 	}
+// 	i++;
+// 	while(buff[i] != '\n')
+// 	{
+// 		write(1, &buff[i], 1);
+// 		i++;
+// 	}
+// 	i++;
 // 	while(buff[i] != '\n')
 // 	{
 // 		write(1, &buff[i], 1);
@@ -133,6 +141,8 @@ int main()
 // 	close(fd);
 // 	return (0);
 // }
+
+
 // int main()
 // {
 // 	int		fd;
