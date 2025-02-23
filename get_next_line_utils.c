@@ -6,13 +6,13 @@
 /*   By: kkruszyn <kkruszyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:43:04 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/23 14:10:53 by kkruszyn         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:21:28 by kkruszyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t  ft_strlen(const char*str)
+size_t	ft_strlen(const char*str)
 {
 	size_t	counter;
 
@@ -27,9 +27,9 @@ size_t  ft_strlen(const char*str)
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int     len;
-	int     i;
-	
+	int	len;
+	int	i;
+
 	i = 0;
 	len = ft_strlen(s);
 	while (i < len)

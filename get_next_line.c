@@ -6,25 +6,19 @@
 /*   By: kkruszyn <kkruszyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:40:37 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/23 14:08:22 by kkruszyn         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:17:35 by kkruszyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "stdio.h"
 
-
-
 char	*get_next_line(int fd)
 {
 	char	*buff;
-	ssize_t	bytesRead;
-	// int		i;
-	// static size_t index;
+	ssize_t	bytesread;
 
-	// i = 0;
-	// index = 0;
-	if (fd < 0 )
+	if (fd < 0)
 	{
 		perror("Error while opening a file");
 		return (NULL);
@@ -32,16 +26,14 @@ char	*get_next_line(int fd)
 	buff = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buff)
 		return (NULL);
-	// while(buff[i] != '\n')
-	// 	index += buff[i + 1];
-	bytesRead = read(fd, buff, BUFFER_SIZE);
-	if (bytesRead < 0)
+	bytesread = read(fd, buff, BUFFER_SIZE);
+	if (bytesread < 0)
 		perror("Error while reading a file");
-	buff[bytesRead] = '\0';
+	buff[bytesread] = '\0';
 	return (buff);
 }
 
-int main()
+int	main(void)
 {
 	char	*line;
 	int		fd;
