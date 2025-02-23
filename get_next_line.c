@@ -6,7 +6,7 @@
 /*   By: kkruszyn <kkruszyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:40:37 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/23 14:17:35 by kkruszyn         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:22:57 by kkruszyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*get_next_line(int fd)
 		perror("Error while opening a file");
 		return (NULL);
 	}
-	buff = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
+	buff = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buff)
 		return (NULL);
 	bytesread = read(fd, buff, BUFFER_SIZE);
