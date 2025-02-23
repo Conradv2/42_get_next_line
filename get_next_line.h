@@ -6,7 +6,7 @@
 /*   By: kkruszyn <kkruszyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:43:16 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/23 14:24:51 by kkruszyn         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:32:10 by kkruszyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ char	*get_next_line(int fd);
 size_t	ft_strlen(const char*str);
 void	ft_putstr_fd(char *s, int fd);
 void	*ft_calloc(size_t nitems, size_t size);
-void	*ft_memset(void*str, int c, size_t n);
+void	*ft_bzero(void*str, size_t n);
 #endif

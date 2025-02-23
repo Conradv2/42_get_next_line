@@ -6,22 +6,22 @@
 /*   By: kkruszyn <kkruszyn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:43:04 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/23 14:24:37 by kkruszyn         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:32:33 by kkruszyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_memset(void*str, int c, size_t n)
+void	*ft_bzero(void*str, size_t n)
 {
-	unsigned char	*ptr;
-	unsigned char	_c;
+	char	*ptr;
+	char	c;
 
-	ptr = (unsigned char *)str;
-	_c = (unsigned char)c;
+	ptr = (char *)str;
+	c = 0;
 	while (n != 0)
 	{
-		*ptr = _c;
+		*ptr = c;
 		ptr++;
 		n--;
 	}
@@ -37,7 +37,7 @@ void	*ft_calloc(size_t nitems, size_t size)
 	str = malloc(nitems * size);
 	if (str == NULL)
 		return (NULL);
-	ft_memset (str, 0, nitems * size);
+	ft_bzero(str, nitems * size);
 	return ((void *)str);
 }
 
