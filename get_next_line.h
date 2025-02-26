@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkruszyn <kkruszyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: conrad <conrad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:43:16 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/23 14:32:10 by kkruszyn         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:51:51 by conrad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 # include "unistd.h"
 # include "fcntl.h"
 # include "stdlib.h"
-# define BUFFER_SIZE 4
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4
+# endif
 
 char	*get_next_line(int fd);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup( const char *str1 );
 size_t	ft_strlen(const char*str);
 void	ft_putstr_fd(char *s, int fd);
 void	*ft_calloc(size_t nitems, size_t size);
