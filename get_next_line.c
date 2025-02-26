@@ -3,35 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkruszyn <kkruszyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: conrad <conrad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:40:37 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/23 14:26:34 by kkruszyn         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:08:01 by conrad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "stdio.h"
 
-char	*get_next_line(int fd)
-{
-	char	*buff;
-	ssize_t	bytesread;
-
-	if (fd < 0)
-	{
-		perror("Error while opening a file");
-		return (NULL);
-	}
-	buff = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (!buff)
-		return (NULL);
-	bytesread = read(fd, buff, BUFFER_SIZE);
-	if (bytesread < 0)
-		perror("Error while reading a file");
-	buff[bytesread] = '\0';
-	return (buff);
-}
 
 int	main(void)
 {
@@ -41,6 +22,11 @@ int	main(void)
 
 	i = 1;
 	fd = open("text.txt", O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Error while opening a file");
+		return (1);
+	}
 	while (i < 4)
 	{
 		line = get_next_line(fd);
@@ -52,7 +38,20 @@ int	main(void)
 	close(fd);
 	return (0);
 }
+// char	*get_next_line(int fd)
+// {
+// 	char	*buff;
+// 	ssize_t		bytesread;
 
+// 	buff = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+// 	if (!buff)
+// 		return (NULL);
+// 	bytesread = read(fd, buff, BUFFER_SIZE);
+// 	if (bytesread < 0)
+// 		perror("Error while reading a file");
+// 	buff[bytesread] = '\0';
+// 	return (buff);
+// }
 
 // int main()
 // {	
@@ -61,7 +60,7 @@ int	main(void)
 // 	char	*buff;
 // 	size_t	line_len;
 // 	int i;
-
+//
 // 	i = 0;
 // 	buff = (char *)calloc(BUFFER_SIZE + 1, sizeof(char));
 // 	if (!buff)
@@ -71,7 +70,7 @@ int	main(void)
 // 	{
 // 		perror("error opening a file");
 // 		free(buff);
-// 		return (1);
+// 		return (0);
 // 	}
 // 	bytesRead = read(fd, buff, BUFFER_SIZE);
 // 	if (bytesRead < 0)
