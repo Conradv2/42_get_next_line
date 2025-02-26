@@ -3,42 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkruszyn <kkruszyn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: conrad <conrad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:43:04 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/23 14:32:33 by kkruszyn         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:54:23 by conrad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_bzero(void*str, size_t n)
+char	*ft_strdup( const char *str1 )
 {
-	char	*ptr;
-	char	c;
+	char	*cpy;
+	int		str1_len;
 
-	ptr = (char *)str;
-	c = 0;
-	while (n != 0)
+	str1_len = ft_strlen(str1);
+	cpy = (char *)malloc((str1_len + 1) * sizeof(char));
+	if (cpy == NULL)
+		return (NULL);
+	while (*str1 != '\0')
 	{
-		*ptr = c;
-		ptr++;
-		n--;
+		*cpy++ = *str1++;
 	}
-	return (str);
+	*cpy = '\0';
+	return (cpy - str1_len);
 }
 
-void	*ft_calloc(size_t nitems, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	void	*str;
+	char	*s3;
+	int		s1_len;
+	int		s2_len;
+	int		tmp;
+	int		i;
 
-	if (nitems > 0 && size > ((size_t) - 1) / nitems)
+	i = 0;
+	if (!s1 || !s2)
 		return (NULL);
-	str = malloc(nitems * size);
-	if (str == NULL)
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	s3 = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
+	if (s3 == NULL)
 		return (NULL);
-	ft_bzero(str, nitems * size);
-	return ((void *)str);
+	while (i < s1_len)
+	{
+		s3[i] = s1[i];
+		i++;
+	}
+	tmp = i;
+	i = 0;
+	while (i < s2_len)
+		s3[tmp++] = s2[i++];
+	s3[tmp] = '\0';
+	return (s3);
 }
 
 size_t	ft_strlen(const char*str)
