@@ -21,4 +21,17 @@ get_next_line(fd) -> Linijka 3  static int miejsce 30    ---> bo \n sie wlicza
 
 nie moge od razu zczytac wszystkiego i iterowac sobie po prostu po tablicy, tylko zapamietywac linijke w danym momencie
 https://medium.com/@lannur-s/gnl-c3cff1ee552b <-- stronka ktora pomoze w zrozumieniu tematu xdddd
-(odchodze od zmysłów) 
+(odchodze od zmysłów)
+
+
+get_next_line(fd) <-- przekazuje tutaj file descriptor i na koncu funkcja zwraca linijke tekstu
+{
+	char *line; <-- to bedzie mi na koncu zwracalo linije tekstu
+	static char *left_data <-- to bedzie mi zapisywalo od kiedy zaczynac sprawdzanie linijki;
+
+	line = line_grabber(fd, left_data) <-- to bedzie mi pobieralo linijke tekstu i ja zapisywalo do stringa;
+	left_data = left_str(fd) <-- to bedzie mi przechowywalo pozostala czesc linijki kiedy buff bedzie za duzy 
+
+}
+
+ 
