@@ -34,4 +34,22 @@ get_next_line(fd) <-- przekazuje tutaj file descriptor i na koncu funkcja zwraca
 
 }
 
+aktualnie mam kod ktory nastepująco
+ -> mam BUFFER_SIZE = 4
+ -> odpalam funkcje i 4 razy ma mi zdodbyc linijke
+ -> *w funkcji get_next_line*
+	-> alokacja pamieci dla 4 + 1
+	-> jednorazowe sprawdzenie czy buffor != NULL
+	-> jednorazowe sprawdzenie czy bytesread <= 0
+	-> jednorazowe sprawdzenie left_str
+	-> jednorazowe sprawdzenie new_position
+	-> jednorazowe ustawienie new_position
+
+gdzie w funkcji get_next_line podpunkt 3 - 4 powinno byc zapetlone zeby poprawnie
+przypisywac elementy do nowo stworzonej tablicy, np wlasnie
+jak mam BUFFER_SIZE = 4 a w linijce mam 16 znakow, tak to jednorazowo to mi sie ustawi
+a za pomoca petli bede mogl dodawac do line nowe elementy az nie trafie na \n
+
+xddd
+popierdoli mnie fest z tym zara chyba xddd
  
