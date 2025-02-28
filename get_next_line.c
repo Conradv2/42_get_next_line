@@ -18,7 +18,10 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*left_str;
 	int			bytesread;
+	char		*new_position;
 
+	if (fd <= 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buff)
 		return (NULL);
@@ -30,13 +33,24 @@ char	*get_next_line(int fd)
 	}
 	buff[bytesread] = '\0';
 	if (left_str == NULL)
-	{
 		line = ft_strdup(buff);
-	}
 	else
 	{
 		line = ft_strjoin(left_str, buff);
 		free(left_str);
+	}
+	new_position = ft_strchr(line,'\n');
+	if (new_position != NULL)
+	{
+		*new_position = '\0';
+		line = ft_strdup(left_str);
+		left_str = ft_strdup(new_position + 1);
+	}
+	else
+	{
+		line = ft_strdup(left_str);
+		free(left_str);
+		left_str = NULL;
 	}
 	return (line);
 }
