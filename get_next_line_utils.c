@@ -6,11 +6,31 @@
 /*   By: conrad <conrad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:43:04 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/26 20:54:23 by conrad           ###   ########.fr       */
+/*   Updated: 2025/02/28 03:53:55 by conrad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strchr(const char *str, int search_str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ((unsigned char)search_str))
+		{
+			return ((char *)&str[i]);
+		}
+		i++;
+	}
+	if (search_str == '\0')
+	{
+		return ((char *)&str[i]);
+	}
+	return (NULL);
+}
 
 char	*ft_strdup( const char *str1 )
 {
