@@ -6,11 +6,36 @@
 /*   By: conrad <conrad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:43:04 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/28 03:53:55 by conrad           ###   ########.fr       */
+/*   Updated: 2025/02/28 18:28:48 by conrad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char		*_substr;
+	size_t		i;
+	size_t		s_len;
+
+	if (s == NULL)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	if (len > s_len - start)
+		len = s_len - start;
+	_substr = (char *)malloc((len + 1) * sizeof(char));
+	if (_substr == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		_substr[i++] = s[start++];
+	}
+	_substr[i] = '\0';
+	return (_substr);
+}
 
 char	*ft_strchr(const char *str, int search_str)
 {
