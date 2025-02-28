@@ -1,2 +1,2 @@
-cc *.c -Wall -Werror -Wextra
+cc *.c -Wall -Werror -Wextra -g
 ./a.out
