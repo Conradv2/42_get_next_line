@@ -52,4 +52,11 @@ a za pomoca petli bede mogl dodawac do line nowe elementy az nie trafie na \n
 
 xddd
 popierdoli mnie fest z tym zara chyba xddd
+
+
+dobra, tera na koncu po wpisaniu wszystkiego w left_str moge teoretycznie zrobic cos takiego
+ze if ft_strchr left_str \n != 
+	to wtedy line = ft_strdup ft_strchr \n left_str
+
+ale tez i pewnie nie xddd po robocie se sprawdze lol
  
