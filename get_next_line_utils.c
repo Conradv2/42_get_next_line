@@ -108,7 +108,7 @@ size_t	ft_strlen(const char*str)
 	size_t	counter;
 
 	counter = 0;
-	while (*str != '\0')
+	while (*str != '\n')
 	{
 		counter++;
 		str++;
