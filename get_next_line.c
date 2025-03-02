@@ -42,7 +42,6 @@ char	*get_next_line(int fd)
 			break ;
 	}
 	free(buff);
-
 	if (left_str == NULL || *left_str == '\0')
 	{
 		free(left_str);
