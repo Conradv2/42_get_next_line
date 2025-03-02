@@ -48,11 +48,11 @@ int	main(void)
 		perror("Error while opening a file");
 		return (1);
 	}
-	while (i < 4)
+	while (i < 5)
 	{
 		line = get_next_line(fd);
 		// printf("%s", line);
-		printf("line [%02d]: %s", i, line);
+		printf("line[%02d]: %s", i, line);
 		free(line);
 		i++;
 	}

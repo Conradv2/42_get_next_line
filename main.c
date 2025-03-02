@@ -5,8 +5,10 @@ int main(void)
 {
 	int     fd;
 	char    *line;
+	int	i;
 
-	fd = open("text.txt", O_RDONLY);
+	i = 1;
+	fd = open("text2.txt", O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error opening file"); // Print error if file can't be opened
@@ -17,8 +19,9 @@ int main(void)
 	{
 		if (!line) // Check for NULL before printing
 			break;
-		printf("%s", line);
+		printf("line[%02d] : %s", i, line);
 		free(line);
+		i++;
 	}
 	close(fd);
 	return (0);

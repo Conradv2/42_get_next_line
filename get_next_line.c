@@ -15,24 +15,20 @@
 char	*get_next_line(int fd)
 {
 	static char	*left_str;
+	char		*new_position;
 	char		*line;
 	char		*buff;
-	int		bytesread;
+	int			bytesread;
 	char		*tmp;
+	size_t		line_len;
 
-	if (fd <= 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	bytesread = 1;
-	while (bytesread > 0)
+	if (buff == NULL)
+		return (NULL);
+	while ((bytesread = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
-		bytesread = read(fd, buff, BUFFER_SIZE);
-		if (bytesread <= 0)
-		{
-			free(buff);
-			free(left_str);
-			return (NULL);
-		}
 		buff[bytesread] = '\0';
 		if (left_str == NULL)
 			left_str = ft_strdup(buff);
@@ -46,9 +42,32 @@ char	*get_next_line(int fd)
 			break ;
 	}
 	free(buff);
-	line = ft_strdup(left_str);
-	free(left_str);
-	left_str = NULL;
+
+	if (left_str == NULL || *left_str == '\0')
+	{
+		free(left_str);
+		left_str = NULL;
+		return (NULL);
+	}
+	new_position = ft_strchr(left_str, '\n');
+	if (new_position != NULL)
+	{
+		line_len = new_position - left_str + 1;
+		line = ft_substr(left_str, 0, line_len);
+		tmp = ft_strdup(new_position + 1);
+		free(left_str);
+		left_str = tmp;
+	}
+	else
+	{
+		line = ft_strdup(left_str);
+		free(left_str);
+		left_str = NULL;
+		if (*line == '\0')
+		{
+			free(line);
+			return (NULL);
+		}
+	}
 	return (line);
 }
-
