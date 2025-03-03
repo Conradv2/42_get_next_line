@@ -46,7 +46,7 @@ char	*set_new_position(char *left_str)
 	{
 		tmp = ft_strdup(new_position + 1);
 		free(left_str);
-		left_str = tmp;
+		new_position = tmp;
 	}
 	else
 	{
@@ -54,7 +54,7 @@ char	*set_new_position(char *left_str)
 		left_str = NULL;
 		return (NULL);
 	}
-	return (left_str);
+	return (new_position);
 }
 
 char	*fill_left_str(int fd, char *left_str, char *buff)
