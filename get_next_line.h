@@ -20,6 +20,9 @@
 # endif
 
 char	*get_next_line(int fd);
+char	*fill_left_str(int fd, char *left_str, char *buff);
+char	*set_new_position(char *left_str);
+char	*get_line(char *left_str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup( const char *str1 );
