@@ -115,17 +115,3 @@ size_t	ft_strlen(const char*str)
 	}
 	return (counter);
 }
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	len;
-	int	i;
-
-	i = 0;
-	len = ft_strlen(s);
-	while (i < len)
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
-}
