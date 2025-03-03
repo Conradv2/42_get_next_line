@@ -27,8 +27,11 @@ char	*get_next_line(int fd)
 	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (buff == NULL)
 		return (NULL);
-	while ((bytesread = read(fd, buff, BUFFER_SIZE)) > 0)
+	while (1)
 	{
+		bytesread = read(fd, buff, BUFFER_SIZE);
+		if (bytesread <= 0)
+			break;
 		buff[bytesread] = '\0';
 		if (left_str == NULL)
 			left_str = ft_strdup(buff);
