@@ -59,4 +59,8 @@ ze if ft_strchr left_str \n !=
 	to wtedy line = ft_strdup ft_strchr \n left_str
 
 ale tez i pewnie nie xddd po robocie se sprawdze lol
+
+
+dobra w sumie nie jest to taki trudny projekt, i mean ciezko troche zrozumiec jak to zaimplementowac
+ale overall przyjemny projekt, musze jeszcze tylko rozbic to na mniejsze funkcje i bedzie G
  
