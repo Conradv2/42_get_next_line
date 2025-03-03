@@ -8,7 +8,7 @@ int main(void)
 	int	i;
 
 	i = 1;
-	fd = open("text2.txt", O_RDONLY);
+	fd = open("text.txt", O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error opening file"); // Print error if file can't be opened
