@@ -8,7 +8,7 @@ int main(void)
 	int	i;
 
 	i = 1;
-	fd = open("text.txt", O_RDONLY);
+	fd = open("robus.txt", O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error opening file"); // Print error if file can't be opened
@@ -19,7 +19,8 @@ int main(void)
 	{
 		if (!line) // Check for NULL before printing
 			break;
-		printf("line[%02d] : %s", i, line);
+		//printf("line[%02d] : %s", i, line);
+		printf("%s", line);
 		free(line);
 		i++;
 	}
