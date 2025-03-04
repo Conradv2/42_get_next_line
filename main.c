@@ -17,10 +17,10 @@ int main(void)
 
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (!line) // Check for NULL before printing
+		if (!line)
 			break;
-		//printf("line[%02d] : %s", i, line);
-		printf("%s", line);
+		printf("line[%d] : %s", i, line);
+		//printf("%s", line);
 		free(line);
 		i++;
 	}
