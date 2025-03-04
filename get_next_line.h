@@ -6,7 +6,7 @@
 /*   By: conrad <conrad@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:43:16 by conrad            #+#    #+#             */
-/*   Updated: 2025/02/28 03:54:50 by conrad           ###   ########.fr       */
+/*   Updated: 2025/03/04 13:50:37 by kkruszyn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,4 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup( const char *str1 );
 char	*ft_strchr(const char *str, int search_str);
 size_t	ft_strlen(const char*str);
-void	ft_putstr_fd(char *s, int fd);
-void	*ft_calloc(size_t nitems, size_t size);
-void	*ft_bzero(void*str, size_t n);
 #endif
