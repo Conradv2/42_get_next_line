@@ -11,7 +11,7 @@ int main(void)
 	fd = open("robus.txt", O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Error opening file"); // Print error if file can't be opened
+		perror("Error opening file");
 		return (1);
 	}
 
